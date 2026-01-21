@@ -2,6 +2,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import OrderDetailView
+from .views import DailySalesReportCSVExport
 from .views import DailySalesReportView
 from .views import (
     MenuItemViewSet,
@@ -20,5 +21,9 @@ urlpatterns = [
     path('orders/<int:pk>/status/', UpdateOrderStatusView.as_view()),
     path('dashboard/', DashboardView.as_view()),
     path('reports/daily-sales/', DailySalesReportView.as_view()),
+    path("reports/daily-sales/export/",
+          DailySalesReportCSVExport.as_view(),
+          name="daily-sales-csv"
+    )
 
 ]
